@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <math.h>
 
+
+#define TIME_TO_MOVE 3;
 int main(int argc, char** argv)
 {
   
@@ -23,6 +25,10 @@ int main(int argc, char** argv)
   float distance = sqrtf(powf(pointOneX - pointTwoX, 2) +
     powf(pointOneY - pointTwoY, 2));
   printf("\nDistance between the two points is: %.2f\n", distance);
+  
+  // calculate speed (using 3 seconds - TIME_TO_MOVE)
+  float speed = distance / TIME_TO_MOVE;
+  printf("You too move at the speed of %.2f to cover the distance", speed);
   
   printf("\n");
   return (EXIT_SUCCESS);
