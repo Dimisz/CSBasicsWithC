@@ -10,6 +10,12 @@
 
 int main(int argc, char** argv)
 {
+  typedef struct Vector Vector;
+  struct Vector
+  {
+    float x;
+    float y;
+  };
   
   float pointOneX;
   float pointOneY;
@@ -41,6 +47,28 @@ int main(int argc, char** argv)
   printf("Direction: %.2f radians\n", directionRadians);
   float direction = directionRadians * 180 / M_PI;
   printf("Direction: %.2f degrees\n", direction);
+  
+  
+  // calculate and print a velocity vector
+  Vector velocity;
+  velocity.x = deltaX / TIME_TO_MOVE;
+  velocity.y = deltaY / TIME_TO_MOVE;
+  printf("Velocity vector: (%.2f, %.2f)\n", velocity.x, velocity.y);
+  
+  // calculate unit direction vector (without given time)
+  Vector unitDirection;
+  unitDirection.x = deltaX;
+  unitDirection.y = deltaY;
+  float length = sqrtf(powf(unitDirection.x, 2) +
+                       powf(unitDirection.y, 2));
+  unitDirection.x /= length;
+  unitDirection.y /= length;
+  // calculate and print velocity vector
+  velocity.x = unitDirection.x * speed;
+  velocity.y = unitDirection.y * speed;
+  printf("Velocity vector: (%.2f, %.2f)\n", velocity.x, velocity.y);
+
+  
   
   printf("\n");
   return (EXIT_SUCCESS);
