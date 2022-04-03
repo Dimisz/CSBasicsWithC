@@ -4,6 +4,10 @@
 
 
 #define TIME_TO_MOVE 3;
+#ifndef M_PI
+  #define 3.1415;
+#endif
+
 int main(int argc, char** argv)
 {
   
@@ -28,7 +32,15 @@ int main(int argc, char** argv)
   
   // calculate speed (using 3 seconds - TIME_TO_MOVE)
   float speed = distance / TIME_TO_MOVE;
-  printf("You too move at the speed of %.2f to cover the distance", speed);
+  printf("Speed: %.2f\n", speed);
+  
+  // calculate direction
+  float deltaX = pointTwoX - pointOneX;
+  float deltaY = pointTwoY - pointOneY;
+  float directionRadians = atan2f(deltaY, deltaX); //returns degrees in radians
+  printf("Direction: %.2f radians\n", directionRadians);
+  float direction = directionRadians * 180 / M_PI;
+  printf("Direction: %.2f degrees\n", direction);
   
   printf("\n");
   return (EXIT_SUCCESS);
