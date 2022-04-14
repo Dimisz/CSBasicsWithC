@@ -14,7 +14,8 @@ int main(int argc, char** argv){
   
   // display array contents using a pointer
   printf("\n");
-  int* pScores = &scores[0];
+//  int* pScores = &scores[0];
+  int* pScores = scores;
   for(int i = 0; i < size; i++){
     
 //    printf("Element address: %p\n", pScores);
