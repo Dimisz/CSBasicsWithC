@@ -8,7 +8,7 @@
 
 void bubbleSort(int array[], int count);
 void selectionSort(int array[], int count);
-//void insertionSort(int array[], int count);
+void insertionSort(int array[], int count);
 
 void getRandomArray(int array[]);
 void printArray(char heading[], int array[], int count);
@@ -33,13 +33,22 @@ int main(int argc, char** argv){
    */
   
   // selection sort
+  /*
   getRandomArray(values);
   printf("\n");
   printArray("Unsorted array", values, NUM_VALUES);
   selectionSort(values, NUM_VALUES);
   printf("\n");
   printArray("Selection sort results", values, NUM_VALUES);
+  */
   
+  // insertion sort
+  getRandomArray(values);
+  printf("\n");
+  printArray("Unsorted array", values, NUM_VALUES);
+  insertionSort(values, NUM_VALUES);
+  printf("\n");
+  printArray("Insertion sort results", values, NUM_VALUES);
   
   return (EXIT_SUCCESS);
 }
@@ -74,7 +83,7 @@ void selectionSort(int array[], int count){
   
   if(PRINT_DEBUG_INFO){
     printf("\n");
-    printf("Bubble sort\n");
+    printf("Selection sort\n");
     printf("--------------\n");
     printf("\n");
   }
@@ -111,3 +120,44 @@ void selectionSort(int array[], int count){
 }
 
 
+void insertionSort(int array[], int count){
+  
+  if(PRINT_DEBUG_INFO){
+    printf("\n");
+    printf("Bubble sort\n");
+    printf("--------------\n");
+    printf("\n");
+  }
+  
+  // process array from left to right
+  for(int k = 1; k < count; k++){
+    
+    // set new value to be inserted
+    int value = array[k];
+    
+    if(PRINT_DEBUG_INFO){
+      printf("Inserting %d\n", value);
+    }
+    
+    // find insertion point for a new value, shifting as we go
+    int i = k - 1;
+    while(i >= 0 &&
+          value < array[i]){
+      if(PRINT_DEBUG_INFO){
+        printf("Shifting %d onto %d\n",
+               array[i], array[i+1]);
+      }
+      array[i + 1] = array[i];
+      i--;
+    }
+    // insert a new value
+    array[i+1] = value;
+    if(PRINT_DEBUG_INFO){
+      printf("\n");
+      printf("After iteration")
+    }
+  }
+  
+  
+  
+}
