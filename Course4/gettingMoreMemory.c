@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h"
+#include <stdlib.h>
 
 int main(int argc, char** argv){
   
@@ -35,9 +35,16 @@ int main(int argc, char** argv){
         
         // output for demonstation purposes
         printf("\nReallocated, new capacity: %d\n", capacity);
-      } ////
+      }
+      
+      *(pNumbers + count) = n;
+      count++;
     }
   }
+  
+  
+  free(pNumbers);
+  pNumbers = NULL;
   
   
   
